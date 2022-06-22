@@ -1,0 +1,22 @@
+{
+    "data": [
+      {
+        "name":"some-guy",
+        "field":"design",
+        "class": "13",
+        "section": "K",
+        "won": false,
+        "position": 0,
+        "mail": "someguy@mail.com"
+      },
+      {
+        "name":"some-guy2",
+        "field":"programming",
+        "class": "10",
+        "section": "A",
+        "won": true,
+        "position": 2,
+        "mail": "someguy2@mail.com"
+      }
+    ]
+  }
