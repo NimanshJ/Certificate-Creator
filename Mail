@@ -1,0 +1,42 @@
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email import encoders
+
+body = '''
+Test '''
+sender = 'Sender mail'
+password = 'Password'
+receiver = 'receivers mail'
+
+Body = MIMEMultipart()
+Body['From'] = sender
+Body['To'] = receiver
+Body['Subject'] = 'test'
+
+Body.attach(MIMEText(body, 'plain'))
+name = "blank merit pdf.pdf"
+
+pdf = f'D:/nimansh/python/practice questions - TS/{name}'
+
+binary_pdf = open(pdf, 'rb')
+
+msg = MIMEBase('application', 'octate-stream', Name="Cert.pdf")
+msg.set_payload((binary_pdf).read())
+
+encoders.encode_base64(msg)
+
+msg.add_header('Content-Decomposition', 'attachment', filename=pdf)
+Body.attach(msg)
+
+session = smtplib.SMTP('smtp.gmail.com', 587)
+
+session.starttls()
+
+session.login(sender, password)
+
+text = Body.as_string()
+session.sendmail(sender, receiver, text)
+session.quit()
+print('Mail Sent')
